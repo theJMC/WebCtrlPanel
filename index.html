@@ -8,20 +8,20 @@
     <title>Web Control Panel</title>
     
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     
-    <!-- Toastr Import-->
-    <link rel="stylesheet" href="toastr.css">
-    
+    <link rel="stylesheet" href="/node_modules/jquery-toast-plugin/dist/jquery.toast.min.css">
+
     <!-- import the webpage's javascript file -->
-    <script type="module" src="/script.js" defer></script>
+    <script src="/assets/js/script.js"></script>
     
   </head>  
   <body class="bg-dark text-light">
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand" href="#">
-        <img src="https://cdn.glitch.com/622a8334-dc24-4533-87b5-6774bfd5ebbe%2FJ%20Box.png?v=1591536198649" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        <img src="assets/img/J Box.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -44,10 +44,6 @@
     </nav>
     
     <main role="main" class="container">
-      <div id="alerts" class="sticky-top alert-fixed"></div>
-      <div class="container alert alert-danger text-center">
-        THIS WEBSITE IS ONLY FOR DEVELOPMENT - NONE OF THE CONTROLS WORK
-      </div>
       <div class="container">
         <div class="jumbotron text-dark">
           <h1 class=" display-6 d-lg-none">Jam's Awesome Smart Home Control Panel</h1>
@@ -64,7 +60,7 @@
                 </td>
                 <td class="align-middle">
                   <div class="btn-group" role="group">
-                    <a  class="btn btn-lg btn-primary" id="SetupOn">On</a>
+                    <a  class="btn btn-lg btn-primary" onclick="Setup(true);">On</a>
                     <a  class="btn btn-lg btn-primary" onclick="Setup(false);">Off</a>
                   </div>
                 </td>
@@ -75,21 +71,13 @@
       </div>
     </main>
     
-    <script>
-      document.getElementById('SetupOn').addEventListener("click", function(){toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")})
-    </script>
-    
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <script src="https://button.glitch.me/button.js" defer></script>
-    
     <!-- Bootstrap JavaScipt -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    
-    <!-- Toastr JS-->
-    <script src="toastr.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <script src="/node_modules/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
     
   </body>
 </html>
