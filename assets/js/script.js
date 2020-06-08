@@ -1,6 +1,4 @@
-/* If you're feeling fancy you can add interactivity 
-*/
-// prints "hi" in the browser's dev tools console
+/* If you're feeling fancy you can add interactivity */
 console.log("Testing");
 
 function Setup(value){
