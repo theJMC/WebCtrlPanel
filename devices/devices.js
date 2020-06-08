@@ -1,7 +1,8 @@
 // Parse the devices.json file to add devices to the device list
 
+//console.log(window.location.href.split("/")[2])
 
-var url = "devices.json";
+var url = "//" + window.location.href.split("/")[2] + ":1337/api";
 var devicesArr;
 
 // Get All Connected Devices
@@ -89,36 +90,36 @@ function loadDevices() {
 
 // Devices
 function device(id, bool){
-  switch (devicesArr[id]["ctrl_type"]){
-    case "switch":
-      if (bool){
-        $.toast({
-        heading: 'Turned On ' + devicesArr[id]["name"],
-        showHideTransition: 'slide',
-        position : 'top-right',
-        bgColor: "#3c763d",
-        loader: false
-      });
-      } else {
-        $.toast({
-          heading: 'Turned off ' + devicesArr[id]["name"],
-          showHideTransition: 'slide',
-          position : 'top-right',
-          bgColor: "#A94442",
-          loader: false
-        });
-      }
-    
-    case "toggle":
+  if (devicesArr[id]["ctrl_type"] == "switch"){
+    if (bool){
       $.toast({
-        heading: 'Toggled ' + devicesArr[id]["name"],
+      heading: 'Turned On ' + devicesArr[id]["name"],
+      showHideTransition: 'slide',
+      position : 'top-right',
+      bgColor: "#3c763d",
+      loader: false
+    });
+    } else {
+      $.toast({
+        heading: 'Turned off ' + devicesArr[id]["name"],
         showHideTransition: 'slide',
         position : 'top-right',
-        bgColor: "#31708f",
+        bgColor: "#A94442",
         loader: false
       });
-  } 
-}
+    }
+  
+  } else if ("toggle") {
+    $.toast({
+      heading: 'Toggled ' + devicesArr[id]["name"],
+      showHideTransition: 'slide',
+      position : 'top-right',
+      bgColor: "#31708f",
+      loader: false
+    });
+  }
+} 
+
 
 
 
