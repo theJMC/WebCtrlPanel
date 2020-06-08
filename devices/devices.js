@@ -71,19 +71,19 @@ function loadDevices() {
 function device(id, bool){
   if (bool){
     $.toast({
-    heading: 'Success!',
-    text: 'Turned on ' + devicesArr[id]["name"],
+    heading: 'Turned On ' + devicesArr[id]["name"],
     showHideTransition: 'slide',
-    icon: 'success',
-    position : 'top-right'
+    position : 'top-right',
+    bgColor: "#3c763d",
+    loader: false
   })
   } else {
     $.toast({
-      heading: 'Success',
-      text: 'Turned off ' + devicesArr[id]["name"],
+      heading: 'Turned off ' + devicesArr[id]["name"],
       showHideTransition: 'slide',
-      icon: 'success',
-      position : 'top-right'
+      position : 'top-right',
+      bgColor: "#A94442",
+      loader: false
     })
   }
   
