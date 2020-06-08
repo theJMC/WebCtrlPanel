@@ -86,7 +86,6 @@ function device(id, bool){
       loader: false
     })
   }
-  
 }
 
 
