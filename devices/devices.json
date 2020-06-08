@@ -3,6 +3,11 @@
         "name": "LED Lightstrip",
         "type": "light",
         "ctrl_type": "switch"
+    },
+    "1":{
+        "name": "Monitors",
+        "type": "screen",
+        "ctrl_type": "toggle"
     }
 
 }

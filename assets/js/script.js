@@ -1,5 +1,4 @@
 /* If you're feeling fancy you can add interactivity */
-console.log("Testing");
 
 // Quick Actions
 
