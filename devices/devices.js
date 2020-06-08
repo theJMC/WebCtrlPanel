@@ -68,6 +68,27 @@ function loadDevices() {
 }
 
 // Devices
+function device(id, bool){
+  if (bool){
+    $.toast({
+    heading: 'Success!',
+    text: 'Turned on ' + devicesArr[id]["name"],
+    showHideTransition: 'slide',
+    icon: 'success',
+    position : 'top-right'
+  })
+  } else {
+    $.toast({
+      heading: 'Success',
+      text: 'Turned off ' + devicesArr[id]["name"],
+      showHideTransition: 'slide',
+      icon: 'success',
+      position : 'top-right'
+    })
+  }
+  
+}
+
 
 // On Page Ready
 $(document).ready(loadDevices());
