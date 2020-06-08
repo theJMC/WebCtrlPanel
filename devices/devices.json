@@ -1,0 +1,10 @@
+{
+    "devices": [
+        {
+            "name": "LED Lightstrip",
+            "id": 0,
+            "type": "light",
+            "ctrl_type": "switch"
+        }
+    ]
+}

@@ -1,6 +1,8 @@
 /* If you're feeling fancy you can add interactivity */
 console.log("Testing");
 
+// Quick Actions
+
 function Setup(value){
     if (value == true){
       $.toast({
@@ -20,3 +22,5 @@ function Setup(value){
       })
     }
   }
+
+// Devices functions
