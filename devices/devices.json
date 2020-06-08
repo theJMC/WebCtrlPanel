@@ -2,12 +2,22 @@
     "0":{
         "name": "LED Lightstrip",
         "type": "light",
-        "ctrl_type": "switch"
+        "ctrl_type": "switch",
+        "ctrl": {
+            "brand": "hue",
+            "gateway": "192.168.0.25",
+            "localID": "5"
+        }
     },
     "1":{
         "name": "Monitors",
         "type": "screen",
-        "ctrl_type": "toggle"
+        "ctrl_type": "toggle",
+        "ctrl": {
+            "brand": "ifttt",
+            "gateway": "https://maker.ifttt.com/trigger/{0}/with/key/{1}", 
+            "localID": "monitors"
+        }
     }
 
 }

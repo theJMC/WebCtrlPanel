@@ -1,5 +1,6 @@
 // Parse the devices.json file to add devices to the device list
 
+
 var url = "devices.json";
 var devicesArr;
 
@@ -32,6 +33,7 @@ function loadDevices() {
   p.then(() => {
     //console.log("Devices list FINAL => " + JSON.stringify(devicesArr))
     for (var key in devicesArr) {
+      // main steup
       console.log("Key: " + key);
       var tRow = document.createElement("tr");
       var tName = document.createElement("td");
@@ -39,21 +41,39 @@ function loadDevices() {
         "<h1 class='display-6'>" + devicesArr[key]["name"] + "</h1>";
       var tCtrl = document.createElement("td");
       tCtrl.setAttribute("class", "align-middle");
+
+      // switch Control Type 
       if (devicesArr[key]["ctrl_type"] == "switch") {
         var btnGroup = document.createElement("div");
-        btnGroup.setAttribute("class", "btn-group");
+        //btnGroup.setAttribute("class", "btn-group  btn-block");
         btnGroup.setAttribute("role", "group");
         var onBtn = document.createElement("a");
-        onBtn.setAttribute("class", "btn btn-lg btn-primary");
+        onBtn.setAttribute("class", "btn btn-lg btn-primary btn-block");
         onBtn.setAttribute("onclick", "device(" + key + ", true);");
         onBtn.innerText = "On";
         var offBtn = document.createElement("a");
-        offBtn.setAttribute("class", "btn btn-lg btn-primary");
+        offBtn.setAttribute("class", "btn btn-lg btn-primary btn-block");
         offBtn.setAttribute("onclick", "device(" + key + ", false);");
         offBtn.innerText = "Off";
         // Link Children
         btnGroup.appendChild(onBtn);
         btnGroup.appendChild(offBtn);
+        tCtrl.appendChild(btnGroup);
+        tRow.appendChild(tName);
+        tRow.appendChild(tCtrl);
+        document.getElementById("devices").appendChild(tRow);
+
+        // toggle Control Type
+      } else if (devicesArr[key]["ctrl_type"] == "toggle") {
+        var btnGroup = document.createElement("div");
+        //btnGroup.setAttribute("class", "btn-group  btn-block");
+        btnGroup.setAttribute("role", "group");
+        var toggleBtn = document.createElement("a");
+        toggleBtn.setAttribute("class", "btn btn-lg btn-primary btn-block");
+        toggleBtn.setAttribute("onclick", "device(" + key + ", true);");
+        toggleBtn.innerText = "Toggle";
+        // Link Children
+        btnGroup.appendChild(toggleBtn);
         tCtrl.appendChild(btnGroup);
         tRow.appendChild(tName);
         tRow.appendChild(tCtrl);
@@ -69,24 +89,37 @@ function loadDevices() {
 
 // Devices
 function device(id, bool){
-  if (bool){
-    $.toast({
-    heading: 'Turned On ' + devicesArr[id]["name"],
-    showHideTransition: 'slide',
-    position : 'top-right',
-    bgColor: "#3c763d",
-    loader: false
-  })
-  } else {
-    $.toast({
-      heading: 'Turned off ' + devicesArr[id]["name"],
-      showHideTransition: 'slide',
-      position : 'top-right',
-      bgColor: "#A94442",
-      loader: false
-    })
-  }
+  switch (devicesArr[id]["ctrl_type"]){
+    case "switch":
+      if (bool){
+        $.toast({
+        heading: 'Turned On ' + devicesArr[id]["name"],
+        showHideTransition: 'slide',
+        position : 'top-right',
+        bgColor: "#3c763d",
+        loader: false
+      });
+      } else {
+        $.toast({
+          heading: 'Turned off ' + devicesArr[id]["name"],
+          showHideTransition: 'slide',
+          position : 'top-right',
+          bgColor: "#A94442",
+          loader: false
+        });
+      }
+    
+    case "toggle":
+      $.toast({
+        heading: 'Toggled ' + devicesArr[id]["name"],
+        showHideTransition: 'slide',
+        position : 'top-right',
+        bgColor: "#31708f",
+        loader: false
+      });
+  } 
 }
+
 
 
 // On Page Ready
