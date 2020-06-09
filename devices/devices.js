@@ -2,7 +2,7 @@
 
 //console.log(window.location.href.split("/")[2])
 
-var url = "//" + window.location.href.split("/")[2] + ":1337" ;
+var url = "//" + window.location.href.split("/")[2] + ":420" ;
 var devicesArr;
 
 // Get All Connected Devices
