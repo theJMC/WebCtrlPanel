@@ -2,13 +2,13 @@
 
 //console.log(window.location.href.split("/")[2])
 
-var url = "//" + window.location.href.split("/")[2] + ":1337/api";
+var url = "//" + window.location.href.split("/")[2] + ":1337" ;
 var devicesArr;
 
 // Get All Connected Devices
 const getDevices = async () => {
   return new Promise((resolve) => {
-    $.getJSON(url, (data) => {
+    $.getJSON(url + "/api", (data) => {
       //console.log("Got JSON")
       //console.log("getDevices -> getJSON => " + JSON.stringify(data))
       devicesArr = data;
@@ -92,31 +92,88 @@ function loadDevices() {
 function device(id, bool){
   if (devicesArr[id]["ctrl_type"] == "switch"){
     if (bool){
-      $.toast({
-      heading: 'Turned On ' + devicesArr[id]["name"],
-      showHideTransition: 'slide',
-      position : 'top-right',
-      bgColor: "#3c763d",
-      loader: false
-    });
+      $.ajax({
+        url: url + "/device",
+        type: "POST",
+        contentType: "application/json",
+        data: '{"id": "' + id + '", "state": ' + bool + "}" ,
+        success: (result) => {
+          $.toast({
+          heading: 'Turned On ' + devicesArr[id]["name"],
+          showHideTransition: 'slide',
+          position : 'top-right',
+          bgColor: "#3c763d",
+          loader: false
+          })
+          console.log("Sent Request")
+        },
+        error: (error) => {
+          $.toast({
+            heading: "An Error Occured - See Console for details",
+            showHideTransition: 'slide',
+            position : 'top-right',
+            icon: "error",
+            loader: false
+            })
+          console.log("An Error Occured")
+        }
+      })
     } else {
-      $.toast({
-        heading: 'Turned off ' + devicesArr[id]["name"],
-        showHideTransition: 'slide',
-        position : 'top-right',
-        bgColor: "#A94442",
-        loader: false
-      });
+      $.ajax({
+        url: url + "/device",
+        type: "POST",
+        contentType: "application/json",
+        data: '{"id": "' + id + '", "state": ' + bool + "}" ,
+        success: (result) => {
+          $.toast({
+          heading: 'Turned off ' + devicesArr[id]["name"],
+          showHideTransition: 'slide',
+          position : 'top-right',
+          bgColor: "#3c763d",
+          loader: false
+          })
+          console.log("Sent Request")
+        },
+        error: (error) => {
+          $.toast({
+            heading: "An Error Occured - See Console for details",
+            showHideTransition: 'slide',
+            position : 'top-right',
+            icon: "error",
+            loader: false
+            })
+          console.log("An Error Occured => " + error)
+        }
+      })
     }
   
   } else if ("toggle") {
-    $.toast({
-      heading: 'Toggled ' + devicesArr[id]["name"],
-      showHideTransition: 'slide',
-      position : 'top-right',
-      bgColor: "#31708f",
-      loader: false
-    });
+    $.ajax({
+      url: url + "/device",
+      type: "POST",
+      contentType: "application/json",
+      data: '{"id": "' + id + '", "state": ' + bool + "}" ,
+      success: (result) => {
+        $.toast({
+        heading: 'Toggled ' + devicesArr[id]["name"],
+        showHideTransition: 'slide',
+        position : 'top-right',
+        bgColor: "#3c763d",
+        loader: false
+        })
+        console.log("Sent Request")
+      },
+      error: (error) => {
+        $.toast({
+          heading: "An Error Occured - See Console for details",
+          showHideTransition: 'slide',
+          position : 'top-right',
+          icon: "error",
+          loader: false
+          })
+        console.log("An Error Occured => " + error)
+      }
+    })
   }
 } 
 
