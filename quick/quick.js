@@ -64,6 +64,7 @@ function loadActions() {
         tRow.appendChild(tName);
         tRow.appendChild(tCtrl);
         document.getElementById("devices").appendChild(tRow);
+        
       } else if (actions[key]["type"] == "wol-pc") {
         var btnGroup = document.createElement("div");
         btnGroup.setAttribute("role", "group");
@@ -75,6 +76,7 @@ function loadActions() {
         tCtrl.appendChild(btnGroup);
         tRow.appendChild(tName);
         tRow.appendChild(tCtrl);
+        document.getElementById("devices").appendChild(tRow);s
 
       } else {
         console.log(
