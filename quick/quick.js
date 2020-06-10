@@ -70,7 +70,7 @@ function loadActions() {
         btnGroup.setAttribute("role", "group");
         var onBtn = document.createElement("a");
         onBtn.setAttribute("class", "btn btn-lg btn-primary btn-block");
-        onBtn.setAttribute("onclick", "wolAction();")
+        onBtn.setAttribute("onclick", "wolAction(" + key + ");")
         onBtn.innerText = "On";
         btnGroup.appendChild(onBtn);
         tCtrl.appendChild(btnGroup);
@@ -175,7 +175,7 @@ function plugAction(id){
   })
 }
 
-function wolAction(){
+function wolAction(id){
   $.ajax({
     url: url + "/wol",
     type: "get",
@@ -188,6 +188,7 @@ function wolAction(){
       loader: false
       })
       console.log("Sent Request")
+      console.log(result)
     },
     error: (error) => {
       $.toast({
