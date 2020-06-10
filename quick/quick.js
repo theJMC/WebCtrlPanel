@@ -76,7 +76,7 @@ function loadActions() {
         tCtrl.appendChild(btnGroup);
         tRow.appendChild(tName);
         tRow.appendChild(tCtrl);
-        document.getElementById("devices").appendChild(tRow);s
+        document.getElementById("devices").appendChild(tRow);
 
       } else {
         console.log(
