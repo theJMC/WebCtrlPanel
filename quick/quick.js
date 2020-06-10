@@ -64,6 +64,18 @@ function loadActions() {
         tRow.appendChild(tName);
         tRow.appendChild(tCtrl);
         document.getElementById("devices").appendChild(tRow);
+      } else if (actions[key]["type"] == "wol-pc") {
+        var btnGroup = document.createElement("div");
+        btnGroup.setAttribute("role", "group");
+        var onBtn = document.createElement("a");
+        onBtn.setAttribute("class", "btn btn-lg btn-primary btn-block");
+        onBtn.setAttribute("onclick", "wolAction();")
+        onBtn.innerText = "On";
+        btnGroup.appendChild(onBtn);
+        tCtrl.appendChild(btnGroup);
+        tRow.appendChild(tName);
+        tRow.appendChild(tCtrl);
+
       } else {
         console.log(
           "Unsupported Control Method for " + actions[key]["name"]
@@ -138,6 +150,33 @@ function plugAction(id){
     type: "POST",
     contentType: "application/json",
     data: '{"id": "' + id + '"}',
+    success: (result) => {
+      $.toast({
+      heading: 'Turned On ' + actions[id]["name"],
+      showHideTransition: 'slide',
+      position : 'top-right',
+      bgColor: "#3c763d",
+      loader: false
+      })
+      console.log("Sent Request")
+    },
+    error: (error) => {
+      $.toast({
+        heading: "An Error Occured - See Console for details",
+        showHideTransition: 'slide',
+        position : 'top-right',
+        icon: "error",
+        loader: false
+        })
+      console.log("An Error Occured")
+    }
+  })
+}
+
+function wolAction(){
+  $.ajax({
+    url: url + "/wol",
+    type: "get",
     success: (result) => {
       $.toast({
       heading: 'Turned On ' + actions[id]["name"],
