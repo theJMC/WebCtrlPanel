@@ -39,7 +39,7 @@ function loadDevices() {
       var tRow = document.createElement("tr");
       var tName = document.createElement("td");
       tName.innerHTML =
-        "<h1 class='display-6'>" + devicesArr[key]["name"] + "</h1>";
+        "<a class='h1 text-white' href='/device?d=" + key + "'>" + devicesArr[key]["name"] + "</a>";
       var tCtrl = document.createElement("td");
       tCtrl.setAttribute("class", "align-middle");
 
