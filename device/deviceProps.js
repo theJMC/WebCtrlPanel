@@ -1,4 +1,3 @@
-const { default: Axios } = require("axios");
 
 var APIurl = "//" + window.location.href.split("/")[2] + ":420" ;
 var devicesArr;
